@@ -1,0 +1,36 @@
+[package]
+name = "solen-rollup"
+version = "0.1.0"
+edition = "2021"
+description = "Solen L2 rollup node — sequences transactions, publishes batches to L1, and bridges assets"
+
+[[bin]]
+name = "solen-rollup"
+path = "src/main.rs"
+
+[dependencies]
+# Solen crates from the main repo
+solen-types = { path = "../solen/crates/solen-types" }
+solen-crypto = { path = "../solen/crates/solen-crypto" }
+solen-rollup-kit = { path = "../solen/crates/solen-rollup-kit" }
+solen-storage = { path = "../solen/crates/solen-storage" }
+solen-vm = { path = "../solen/crates/solen-vm" }
+solen-execution = { path = "../solen/crates/solen-execution" }
+
+# Runtime
+tokio = { version = "1", features = ["full"] }
+axum = "0.7"
+reqwest = { version = "0.12", features = ["json"] }
+clap = { version = "4", features = ["derive"] }
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Error handling
+anyhow = "1"
+thiserror = "2"
